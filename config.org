@@ -96,13 +96,38 @@
 #+end_src
 
 
-* Which Key
+* Appearance
+** TODO Smooth Scrolling [WIP]
+Emacs 29 introduces pixel-scroll-precision mode. This works great for scrolling up and down with a trackpad on MacOS
+However, I would like to introduce this to the C-u and C-d commands in evil mode for aesthetic reasons.
 
-Make which key more responsive
+However, pixel-scroll mode accepts a pixel count as it's parameter while C-u and C-d move by line counts.
+We need to accurately convert these two to replicate the functionality
+
+Doom emacs doesn't support emacs 29 yet so this will have to wait until there's better support
 
 #+begin_src emacs-lisp
-(setq which-key-idle-delay 0.333)
-(setq which-key-idle-secondary-delay 0)
+(setq pixel-scroll-precision-mode t)
+(setq pixel-scroll-precision-interpolate-page t)
+
+(defun gat/get-half-page ()
+  (window-body-height (selected-window) t))
+
+(defun gat/scroll-half-page-up ()
+  (interactive)
+  (if pixel-scroll-precision-interpolate-page
+      (pixel-scroll-precision-interpolate (gat/get-half-page))
+    (evil-scroll-up 0)))
+
+(defun gat/scroll-half-page-down ()
+  (interactive)
+  (if pixel-scroll-precision-interpolate-page
+      (pixel-scroll-precision-interpolate (- (gat/get-half-page)))
+    (evil-scroll-down 0)))
+
+(map! :n "C-u" 'evil-scroll-up
+      :n "C-d" 'evil-scroll-down)
+
 #+end_src
 ** Theming
 #+begin_src emacs-lisp
@@ -120,4 +145,13 @@ Make which key more responsive
       (load-theme gat/light-theme)
     (load-theme gat/dark-theme)))
 
+#+end_src
+
+
+** Which Key
+Make which key more responsive
+
+#+begin_src emacs-lisp
+(setq which-key-idle-delay 0.333)
+(setq which-key-idle-secondary-delay 0)
 #+end_src
