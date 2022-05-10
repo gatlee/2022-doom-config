@@ -155,3 +155,14 @@ Make which key more responsive
 (setq which-key-idle-delay 0.333)
 (setq which-key-idle-secondary-delay 0)
 #+end_src
+* Clojure
+#+begin_src emacs-lisp
+(map! :map 'clojure-mode-map
+      :n ">)" 'paredit-forward-slurp-sexp
+      :n "<(" 'paredit-backward-slurp-sexp
+      :n "<)" 'paredit-forward-barf-sexp
+      :n ">(" 'paredit-backward-barf-sexp
+      :i "C-h" 'paredit-forward-barf-sexp
+      :i "C-l" 'paredit-forward-slurp-sexp)
+
+#+end_src
