@@ -1,3 +1,4 @@
+#+PROPERTY: header-args :results silent
 #+TITLE: Config
 * Boiler plate
 
@@ -95,8 +96,6 @@
 
 #+end_src
 
-#+RESULTS:
-: gat/commit-with-date
 
 * Which Key
 
