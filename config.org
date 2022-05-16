@@ -180,3 +180,10 @@ Make which key more responsive
       :i "C-l" 'paredit-forward-slurp-sexp)
 
 #+end_src
+* Ivy
+#+begin_src emacs-lisp
+(map! :after ivy
+      :map ivy-mode-map
+      :g "<C-return>" #'ivy-immediate-done)
+
+#+end_src
