@@ -159,6 +159,7 @@ Doom emacs doesn't support emacs 29 yet so this will have to wait until there's 
       (load-theme gat/light-theme)
     (load-theme gat/dark-theme)))
 
+(map! :leader "Tn" 'gat/next-theme )
 #+end_src
 
 
