@@ -80,9 +80,23 @@
 (setq doom-localleader-key ",")
 #+end_src
 * Org Stuff
+** Roam
+This stuff is from
+https://github.com/CeleritasCelery/emacs.d/blob/master/emacs.org
+https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/
+- [ ] Make better keybindings
 #+begin_src emacs-lisp
-(setq org-directory "~/OrgRoam/")
-(setq org-roam-directory "~/OrgRoam")
+(setq org-directory "~/OrgFiles/")
+(setq org-roam-directory "~/OrgFiles")
+(setq org-roam-dailies-directory "journals/")
+(setq org-roam-capture-templates
+          '(("d" "default" plain
+             "%?" :target
+             (file+head "${slug}.org" "#+title: ${title}\n")))
+          org-roam-dailies-capture-templates
+          '(("d" "default" entry
+             "* %?" :target
+             (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n%x"))))
 #+end_src
 
 #+begin_src emacs-lisp
