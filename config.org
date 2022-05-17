@@ -96,7 +96,7 @@ https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/
           org-roam-dailies-capture-templates
           '(("d" "default" entry
              "* %?" :target
-             (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n%x"))))
+             (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n* I am proud of today\n* What can I do for others %x %?"))))
 #+end_src
 
 #+begin_src emacs-lisp
