@@ -123,10 +123,13 @@ https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/
 * Appearance
 ** Theming
 - [ ] Use device-eval
+
+Setup preferred dark and light themes and add ability to toggle between them
 #+begin_src emacs-lisp
 (setq gat/light-theme 'doom-gruvbox-light)
 (setq gat/dark-theme 'doom-rouge)
 
+;; Will get overridden by gat/apply-theme if on emacs-plus
 (setq doom-theme gat/dark-theme)
 
 (defun gat/next-theme ()
