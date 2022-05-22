@@ -113,6 +113,12 @@ https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/
 
 #+end_src
 
+** Key bindings
+#+begin_src emacs-lisp
+(map! :map org-mode-map
+      :localleader "S" 'org-save-all-org-buffers)
+
+#+end_src
 
 * Appearance
 ** Theming
