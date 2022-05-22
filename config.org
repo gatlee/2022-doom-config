@@ -133,8 +133,17 @@ https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/
 (map! :leader "Tn" 'gat/next-theme )
 #+end_src
 
+Leverage [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]] system appearance hook to match light/dark theme of system
+#+begin_src emacs-lisp
+(defun gat/apply-theme (appearance)
+  "Load theme, taking current system APPEARANCE into consideration."
+  (mapc #'disable-theme custom-enabled-themes)
+  (pcase appearance
+    ('light (load-theme gat/light-theme))
+    ('dark (load-theme gat/dark-theme))))
 
-
+(add-hook 'ns-system-appearance-change-functions #'gat/apply-theme)
+#+end_src
 
 ** TODO Smooth Scrolling [WIP]
 Emacs 29 introduces pixel-scroll-precision mode. This works great for scrolling up and down with a trackpad on MacOS
