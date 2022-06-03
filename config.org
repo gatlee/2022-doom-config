@@ -110,14 +110,15 @@ https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/
 (setq org-archive-location (concat org-directory "/pages/archived.org::"))
 #+end_src
 
+Ideally this quickly stages all changes and commits with a timestamp
 #+begin_src emacs-lisp
 (defun gat/commit-with-date ()
   (interactive)
   (magit-stage-untracked)
   (magit-stage-modified)
   (magit-commit-create)
-  (insert (format-time-string "%D %-I:%M %p")))
-
+  (with-current-buffer "COMMIT_EDITMSG"
+    (insert (format-time-string "%D %-I:%M %p"))))
 #+end_src
 
 ** Key bindings
@@ -125,6 +126,20 @@ https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/
 (map! :map org-mode-map
       :localleader "S" 'org-save-all-org-buffers)
 
+#+end_src
+** Git Autocommit Mode
+#+begin_src emacs-lisp
+
+(setq gac-automatically-push-p nil)
+(setq gac-debounce-interval 3)
+
+(defun $create-commit-message (filename)
+  (let ((date (format-time-string "%Y-%m-%d %T" ))
+        (filenameWithoutPath (car (last (split-string filename "/")))))
+    (concat date " | " filenameWithoutPath)))
+
+(setq gac-default-message '$create-commit-message)
+#+end_src
 #+end_src
 
 * Appearance
