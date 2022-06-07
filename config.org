@@ -103,8 +103,10 @@ https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/
 ,** What am I grateful for?
 ,** What can I do for others [[roam:People I care about]] \n
 ,** TODO Check your agenda
+   DEADLINE: <%<%Y-%m-%d>>
 ,** TODO Add any upcoming events
-,* %<%Y-%m-%d> Today"))))
+   DEADLINE: <%<%Y-%m-%d>>
+,* [%<%Y-%m-%d>] Today"))))
 (setq org-agenda-files (list "~/OrgFiles/journals" "~/OrgFiles/pages"))
 (setq +org-capture-todo-file "pages/20200515171855-todo.org")
 (setq org-archive-location (concat org-directory "/pages/archived.org::"))
