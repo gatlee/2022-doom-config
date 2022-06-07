@@ -50,4 +50,5 @@
 ;(unpin! t)
 
 (package! yequake)
+(package! git-auto-commit-mode)
 (package! org-modern)
