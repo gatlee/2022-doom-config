@@ -298,3 +298,9 @@ Make which key more responsive
                               (sticky . t))))))
 
 #+end_src
+* Emojis
+** Emoji insertion
+#+begin_src emacs-lisp
+(map! :ni "C-c e" 'emojify-insert-emoji)
+
+#+end_src
