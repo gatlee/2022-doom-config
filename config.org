@@ -142,6 +142,28 @@ Ideally this quickly stages all changes and commits with a timestamp
 
 (setq gac-default-message '$create-commit-message)
 #+end_src
+** Export to .ics
+#+begin_src emacs-lisp
+(setq org-agenda-private-local-path "/tmp/dummy.ics")
+(setq org-agenda-custom-commands
+      `(("X" agenda "" nil ,(list org-agenda-private-local-path))))
+
+(defun org-agenda-export-to-ics ()
+  (interactive)
+  ;; Run all custom agenda commands that have a file argument.
+  (org-batch-store-agenda-views)
+
+  ;; Org mode correctly exports TODO keywords as VTODO events in ICS.
+  ;; However, some proprietary calendars do not really work with
+  ;; standards (looking at you Google), so VTODO is ignored and only
+  ;; VEVENT is read.
+  (with-current-buffer (find-file-noselect org-agenda-private-local-path)
+    (goto-char (point-min))
+    (while (re-search-forward "VTODO" nil t)
+      (replace-match "VEVENT"))
+    (save-buffer)))
+
+#+end_src
 ** Org-Modern configuration
 #+begin_src emacs-lisp
 ;; Minimal UI
