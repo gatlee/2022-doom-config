@@ -284,3 +284,17 @@ Make which key more responsive
       :g "<C-return>" #'ivy-immediate-done)
 
 #+end_src
+* TODO Yequake
+
+#+begin_src emacs-lisp
+(setq yequake-frames
+      '(("org-capture"
+         (buffer-fns . (yequake-org-capture))
+         (width . 0.75)
+         (height . 0.5)
+         (alpha . 0.95)
+         (frame-parameters . ((undecorated . t)
+                              (skip-taskbar . t)
+                              (sticky . t))))))
+
+#+end_src
