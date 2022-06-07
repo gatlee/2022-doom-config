@@ -152,8 +152,7 @@
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         +roam2
-        +dragndrop
-        +pretty)
+        +dragndrop)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
