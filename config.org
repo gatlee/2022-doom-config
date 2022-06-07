@@ -164,6 +164,7 @@ Ideally this quickly stages all changes and commits with a timestamp
     (save-buffer)))
 
 #+end_src
+** Capture Templates
 ** Org-Modern configuration
 #+begin_src emacs-lisp
 ;; Minimal UI
@@ -234,7 +235,7 @@ Setup preferred dark and light themes and add ability to toggle between them
       (load-theme gat/light-theme)
     (load-theme gat/dark-theme)))
 
-(map! :leader "Tn" 'gat/next-theme )
+(map! :leader :desc "dark mode" "td" 'gat/next-theme )
 #+end_src
 
 Leverage [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]] system appearance hook to match light/dark theme of system
